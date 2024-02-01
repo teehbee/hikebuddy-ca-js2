@@ -29,9 +29,17 @@ async function registerUser(url, data) {
     };
 
     const response = await fetch(url, postData);
-    console.log("response is", response)
+
+    if(!response.ok) {
+      throw new Error("HTTP error" + response.status);
+    }
+
     const json = await response.json();
+
     console.log("json", json);
+
+    window.location.href = "../success.html";
+
     return json;
   } catch (error) {
     console.log("error is", error);

@@ -12857,4 +12857,8 @@ textarea.form-control-lg {
   }
 }
 
+.hidden {
+  display: none;
+}
+
 /*# sourceMappingURL=index.css.map */

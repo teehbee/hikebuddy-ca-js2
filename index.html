@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dist/css/index.css">
+  <script defer src="/js/loginform.js"></script>
 </head>
 <body class="bg-login-body-green-white">
   <main>
@@ -29,19 +30,19 @@
         <h1 class="text-center pt-4 pt-lg-2 text-frontpage font-fm-mulish fw-bold fs-2-rem-lg-2-5-rem">Welcome back</h1>
         <h2 class="text-center pt-2 text-frontpage fs-1rem-lg-1-25rem font-fm-mulish">Login to your account</h2>
       </div>
-      <form action="/profile/index.html" method="get" class="w-75 m-auto">
+      <form id="login-form" method="post" class="w-75 m-auto">
         <div class="pt-3 ">
-          <label for="user-email" class="form-label text-frontpage font-fm-mulish fs-0-75-rem  mb-lg-0">Email address</label>
-          <input type="email" class="form-control" id="user-email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required>
-          <div class="invalid-feedback">Please provide a valid email address</div>
+          <label for="login-user-email" class="form-label text-frontpage font-fm-mulish fs-0-75-rem  mb-lg-0">Email address</label>
+          <input type="email" class="form-control" id="login-user-email">
         </div>
         <div class="pt-3">
-          <label for="user-password" class="form-label text-frontpage font-fm-mulish fs-0-75-rem mb-lg-0">Password</label>
-          <input type="password" class="form-control" id="user-password" aria-describedby="forgottenPassword" minlength="8" required>
+          <label for="login-user-password" class="form-label text-frontpage font-fm-mulish fs-0-75-rem mb-lg-0">Password</label>
+          <input type="password" class="form-control" id="login-user-password" aria-describedby="forgottenPassword">
           <div id="forgottenPassword" class="form-text text-end font-fm-mulish pb-3 fs-0-75-rem"><a href="#" class="text-decoration-none text-danger-frontpage">Forgotten your password?</a></div>
         </div>
         <div class="text-center pt-3">
-        <button type="submit" class="btn btn-login w-75 rounded-5 font-fm-mulish fs-1-25-rem">SIGN IN</button>
+          <div id="login-error" class="fs-0-75-rem text-danger hidden pb-2">Username or password is incorrect</div>
+        <input type="submit" class="btn btn-login w-75 rounded-5 font-fm-mulish fs-1-25-rem" value="SIGN IN"></input>
       </div>
       </form>
       <div class="text-center pt-3">

@@ -38,6 +38,8 @@ async function registerUser(url, data) {
 
     console.log("json", json);
 
+    localStorage.setItem("username", data.name);
+
     window.location.href = "../success.html";
 
     return json;

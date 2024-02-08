@@ -12702,6 +12702,10 @@ textarea.form-control-lg {
   border-bottom-left-radius: 50px;
 }
 
+.min-height-150-px {
+  min-height: 150px;
+}
+
 .frontpage-height {
   max-height: 1920px;
 }

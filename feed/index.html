@@ -9,7 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../dist/css/index.css">
-  <script defer src="/js/posts.js"></script>
+  <script defer type="module" src="/js/posts.js"></script>
+  <script defer type="module" src="/js/createpost.js"></script>
 </head>
 <body class="bg-login-body-green-white">
   <header>
@@ -59,7 +60,8 @@
       <p class="text-frontpage font-fm-mulish fs1rem-lg-1-5rem pt-2 w-75 m-auto">Write where you are and who you are looking for</p>
       <div class="row pt-4 m-0">
         <div class="col-10 col-sm-8 col-md-6 col-xl-4 m-auto">
-      <textarea class="form-control w-100" id="exampleFormControlTextarea1" rows="4"></textarea>
+      <textarea placeholder="Title" class="form-control w-100 mb-3 no-resize" id="exampleFormControlTextarea1" rows="1"></textarea>
+      <textarea placeholder="Write your message here..." class="form-control w-100 no-resize" id="exampleFormControlTextarea1" rows="4"></textarea>
       <button type="submit" class="btn btn-login w-100 rounded-3 font-fm-mulish fs-1-25-rem mt-3 py-1">Submit post</button>
     </div>
     </div>

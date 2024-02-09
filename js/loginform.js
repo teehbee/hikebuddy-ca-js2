@@ -1,11 +1,11 @@
+import { apiBaseUrl, login } from "./api/constants.js";
+
 const loginForm = document.getElementById("login-form");
 
 const loginEmail = document.getElementById("login-user-email");
 const loginPassword = document.getElementById("login-user-password");
 
 const loginError = document.getElementById("login-error");
-
-const apiBaseUrl = "https://api.noroff.dev";
 
 
 async function loginUser(url, data) {
@@ -49,7 +49,7 @@ function handleSubmit(event) {
      password: loginPassword.value
   };
  
-  loginUser(`${apiBaseUrl}/api/v1/social/auth/login`, userLogin);
+  loginUser(apiBaseUrl + login, userLogin);
  }
 
 

@@ -1,5 +1,4 @@
-const apiBaseUrl = "https://api.noroff.dev";
-const postsEndpoint = "/api/v1/social/posts";
+import { apiBaseUrl, postsEndpoint } from "./api/constants.js"; 
 
 const postContainerFeed = document.querySelector(".feed-container");
 const loadMoreLink = document.querySelector(".load-more");

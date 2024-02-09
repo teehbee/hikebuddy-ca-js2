@@ -32,7 +32,8 @@ async function createPost(url, message) {
     const response = await fetch(url, postMessage);
 
     if(!response.ok) {
-      throw new Error("HTTP error" + response.status);
+      const errorText = await response.text();
+      throw new Error(`API call failed with status ${response.status}: ${errorText}`);
     }
 
     const json = await response.json();

@@ -43,7 +43,7 @@ async function fetchPosts(url, sortOrder = "desc") {
           </div>
           <div class="post-title-and-text-container col-9 ">
             <h5 class="post-title text-green-lg-white font-fm-mulish fs-6 fs-0-75rem-lg-1rem fw-bold pt-4 m-0">${post.title}</h5>
-            <p class="post-body text-green-lg-white font-fm-mulish fs-0-75rem-lg-1rem pt-1">${post.body}</p>    
+            <p class="post-body text-green-lg-white font-fm-mulish fs-0-75rem-lg-1rem pt-1">${post.body}</p>
           </div>
         </div>
       </div>

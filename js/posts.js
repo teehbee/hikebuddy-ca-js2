@@ -3,6 +3,7 @@ import { apiBaseUrl, postsEndpoint } from "./api/constants.js";
 const postContainerFeed = document.querySelector(".feed-container");
 const loadMoreLink = document.querySelector(".load-more");
 const sortOrderSelect = document.querySelector("#sortOrderSelect");
+const searchInput = document.querySelector("#searchInput");
 
 let currentIndex = 10;
 

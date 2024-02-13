@@ -1,5 +1,12 @@
 // Form validation
 
+import { registerUser } from "./api/register-fetch.js";
+import { checkRegUsername } from "./validation/validate-username.js";
+import { validateEmail } from "./validation/validate-email.js";
+import { checkLength, checkPasswordConfirm } from "./validation/validate-password.js";
+
+import { apiBaseUrl, register } from "./api/constants.js";
+
 const registrationForm = document.getElementById("registration-form");
 
 const regUserName = document.getElementById("registration-user-name");
@@ -15,39 +22,6 @@ const regPasswordConfirm = document.getElementById("registration-user-password-c
 const regPasswordConfirmError = document.getElementById("registration-password-confirm-error");
 
 
-
-// POST to API
-
-async function registerUser(url, data) {
-  try {
-    const postData = {
-      method: "post",
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    };
-
-    const response = await fetch(url, postData);
-
-    if(!response.ok) {
-      throw new Error("HTTP error" + response.status);
-    }
-
-    const json = await response.json();
-
-    console.log("json", json);
-
-    localStorage.setItem("registerName", data.name);
-
-    window.location.href = "../success.html";
-
-    return json;
-  } catch (error) {
-    console.log("error is", error);
-  }
-}
-
 function validateForm(event) {
   event.preventDefault();
 
@@ -56,7 +30,6 @@ function validateForm(event) {
     email: regEmail.value,
     password: regPassword.value
   };
-  
 
 
 // Validating username
@@ -90,40 +63,8 @@ if (checkPasswordConfirm(regPassword.value, regPasswordConfirm.value)) {
   regPasswordConfirmError.classList.remove("hidden");
 }
 
-// Function checking length of input
 
-function checkLength(value, len) {
-  if(value.trim().length > len) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-// Function checking email address
-
-function validateEmail(regEmail) {
-  const regEx = /^[a-zA-Z0-9._%+-]+@(noroff\.no|stud\.noroff\.no)$/;
-  const patternMatches = regEx.test(regEmail);
-  return patternMatches;
-}
-
-// Function making sure that the username only contains alphanumerics and underscores. 
-
-function checkRegUsername(value) {
-  const regExt = /^[a-zA-Z0-9_]*$/;
-  return value.trim().length > 0 && regExt.test(value);
-}
-
-// Function checking the confirmed password 
-
-function checkPasswordConfirm(password, confirmPassword) {
-  return password === confirmPassword;
-}
-
-const apiBaseUrl = "https://api.noroff.dev";
-
-registerUser(`${apiBaseUrl}/api/v1/social/auth/register`, user);
+registerUser(apiBaseUrl + register, user);
 }
 
 if (registrationForm) {

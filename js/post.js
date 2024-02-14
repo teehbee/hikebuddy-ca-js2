@@ -1,35 +1,24 @@
-import { apiBaseUrl, postsEndpoint } from "./api/constants.js"; 
+const singlePostContainer = document.querySelector("#specific-post-content");
 
-// Api call for specific post 
+import { getSpecificPost } from "./api/single-post-fetch.js";
 
-const queryString = document.location.search;
-const params = new URLSearchParams(queryString);
-const id = params.get("id");
-
-const token = localStorage.getItem("accessToken");
-
-const headers = {
-  'Content-Type': "application/json",
-  'Authorization': `Bearer ${token}`,
-};
-
-async function getSpecificPost() {
+async function singlePost() {
   try {
-    const response = await fetch(`${apiBaseUrl}${postsEndpoint}/${id}`, {
-      method: "GET",
-      headers: headers,
-    });
+    const specificPost = await getSpecificPost();
 
-    if (!response.ok) {
-      throw new Error (`HTTP error! status: ${response.status}`);
-    }
+    console.log(specificPost);
 
-    const specificPost = await response.json();
-    return specificPost;
+    singlePostContainer.innerHTML = `
+    <div id="specific-post-content" class="mt-5">
+    <h1 class="text-frontpage font-fm-mulish border-bottom border-warning w-75 m-auto fs-1-5-rem pt-3 pb-2">${specificPost.title}</h1>
+    <p class="text-frontpage font-fm-mulish fs-0-75rem-lg-1rem pt-3">${specificPost.body}</p>
+    <p class="text-frontpage font-fm-mulish fs-0-75rem-lg-1rem pt-3">Author</p>
+    <p class="text-frontpage font-fm-mulish fs-0-75rem-lg-1rem pt-3">${new Date(specificPost.created).toLocaleDateString()}</p>
+    </div>
+    `;
   } catch (error) {
-    console.error("Error fetching specific post", error);
-  }
-}
+    console.log(error);
+  }};
 
-getSpecificPost();
+  singlePost();
 

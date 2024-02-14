@@ -35,7 +35,7 @@ async function fetchPosts(url, sortOrder = "desc") {
   <div class="col-10 col-lg-5 bg-light m-lg-3 mt-4 min-height-150-px">
         <div class="post-container row bg-login-body-green-white min-height-150-px">
           <div class="col-3 pt-4">
-            <a href="../profile/index.html">
+            <a href="./post.html?id=${post.id}">
               <picture>
                 <source media="(min-width: 992px)" srcset="../assets/logo/profile-image-large.png">
                 <img src="../assets/logo/profile-image-small.png" alt="Logo of original poster">

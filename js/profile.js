@@ -1,6 +1,8 @@
 const userPostContainer = document.querySelector("#userPosts");
 
 import { getUserPosts } from "./api/profile-posts-fetch.js"
+import { handleDeletePost } from "./api/delete-fetch.js"
+import { apiBaseUrl, postsEndpoint, token, headers } from "./api/constants.js"; 
 
 // Function showing posts from the specific user
 
@@ -22,9 +24,11 @@ async function userPosts() {
       </picture>
       <p class="post-body text-custom-green font-fm-mulish fs-0-625rem-lg-0-875rem pt-3">Post created: ${new Date(post.created).toLocaleDateString()}</p>
       <div>
-      <i id="editPost" class="fa-solid fa-pen-to-square text-custom-green fs-5 pe-3 pb-3"></i>
-      <i id="deletePost" class="fa-regular fa-trash-can text-custom-green fs-5"></i>
-      </div>
+      <a href="">
+      <i id="editPost" class="fa-solid fa-pen-to-square text-custom-green fs-5 pe-3 pb-3"></i></a>
+      <a href="">
+      <i class="deletePost fa-regular fa-trash-can text-custom-green fs-5" data-id="${post.id}"></i>
+      </div></a>
       </div>
       <div class="col-9">
         <h5 class="text-custom-green font-fm-mulish fs-6 fs-0-75rem-lg-1rem fw-bold pt-3 m-0">${post.title}</h5>
@@ -33,8 +37,18 @@ async function userPosts() {
     </div>
   </div>`;
   });
+  attachDeleteEventListener();
   } catch (error) {
     console.log(error);
   }};
 
 userPosts();
+
+
+// Delete post
+
+async function attachDeleteEventListener() {
+document.querySelectorAll(".deletePost").forEach(deleteIcon => {
+  deleteIcon.addEventListener("click", handleDeletePost);
+});
+}

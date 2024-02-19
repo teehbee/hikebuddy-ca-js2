@@ -19,8 +19,10 @@ export async function loginUser(url, data) {
     const json = await response.json();
 
     const accessToken = json.accessToken;
+    const userName =json.name;
 
     localStorage.setItem(`accessToken`, accessToken);
+    localStorage.setItem(`userName`, userName)
 
     console.log(json);
 

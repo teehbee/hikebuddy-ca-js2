@@ -7,3 +7,7 @@ export const postsEndpoint = "/api/v1/social/posts/";
 export const login = "/api/v1/social/auth/login";
 
 export const register = "/api/v1/social/auth/register/";
+
+export const profileEndpoint = "/api/v1/social/profiles/"
+
+export const posts = "/posts"

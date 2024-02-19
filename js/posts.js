@@ -32,14 +32,15 @@ async function fetchPosts(url, sortOrder = "desc") {
     
     postContainerFeed.innerHTML += 
     `
-  <div class="col-10 col-lg-5 bg-light m-lg-3 mt-4 min-height-150-px">
+    
+    <div class="col-10 col-lg-5 bg-light m-lg-3 mt-4 min-height-150-px">
+    <a class="text-decoration-none" href="./post.html?id=${post.id}">
         <div class="post-container row bg-login-body-green-white min-height-150-px">
           <div class="col-3 pt-4">
-            <a href="./post.html?id=${post.id}">
               <picture>
                 <source media="(min-width: 992px)" srcset="../assets/logo/profile-image-large.png">
                 <img src="../assets/logo/profile-image-small.png" alt="Logo of original poster">
-                </picture></a>
+                </picture>
                 <p class="post-body text-green-lg-white font-fm-mulish fs-0-625rem-lg-0-875rem pt-3">Post created: ${new Date(post.created).toLocaleDateString()}</p>
           </div>
           <div class="post-title-and-text-container col-9 ">
@@ -47,6 +48,7 @@ async function fetchPosts(url, sortOrder = "desc") {
             <p class="post-body text-green-lg-white font-fm-mulish fs-0-75rem-lg-1rem pt-1">${post.body}</p>
           </div>
         </div>
+        </a>
       </div>
   `;
 });

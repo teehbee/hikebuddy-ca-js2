@@ -1,8 +1,9 @@
-import { apiBaseUrl, postsEndpoint } from "./api/constants.js"; 
+import { apiBaseUrl, postsEndpoint, headers, token } from "./api/constants.js"; 
 
 const postMessageForm = document.getElementById("post-message-form");
 const messageTitle = document.getElementById("messageTitle");
 const messageContent = document.getElementById("messageContent");
+const postSpinner = document.getElementById("spinner-create-post");
 
 function validatePostForm() {
   if (!messageTitle.value.trim() || !messageContent.value.trim()) {
@@ -18,14 +19,10 @@ async function createPost(url, message) {
   }
   try {
 
-    const token = localStorage.getItem("accessToken");
-
+    postSpinner.classList.remove("hidden");
     const postMessage = {
       method: "post",
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      },
+      headers: headers,
       body: JSON.stringify(message),
     };
 

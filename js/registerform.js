@@ -67,6 +67,15 @@ if (checkPasswordConfirm(regPassword.value, regPasswordConfirm.value)) {
 registerUser(apiBaseUrl + register, user);
 }
 
+document.addEventListener("click", function(event) {
+  if (!registrationForm.contains(event.target)) {
+    regUserNameError.classList.add("hidden");
+    regEmailError.classList.add("hidden");
+    regPasswordError.classList.add("hidden");
+    regPasswordConfirmError.classList.add("hidden");
+  }
+ })
+
 if (registrationForm) {
   registrationForm.addEventListener("submit", validateForm);
 } else {

@@ -1,5 +1,6 @@
 const singlePostContainer = document.querySelector("#specific-post-content");
 
+
 import { getSpecificPost } from "./api/single-post-fetch.js";
 
 async function singlePost() {

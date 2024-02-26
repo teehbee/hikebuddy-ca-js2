@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="../dist/css/index.css">
   <script defer src="../js/api/profile-posts-fetch.js" type="module"></script>
   <script defer src="../js/profile.js" type="module"></script>
+  <script defer src="../js/profileName.js" type="module"></script>
+  <script defer src="../js/logOut.js"></script>
   <script src="https://kit.fontawesome.com/99f531cd0d.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -34,21 +36,23 @@
     </header>
     <main>
     <div class="container px-0 ">
-      <div class="bg-custom-green rounded-custom-top mt-5 text-center position-relative h-100">
+      <div class="bg-custom-green rounded-custom-top mt-5 text-center position-relative vh-100">
         <picture class="position-absolute top-0 start-50 translate-middle">
           <source media="(min-width: 992px)" srcset="../assets/logo/profile-image-main-large.png">
           <img src="../assets/logo/profile-image-header-large.png" alt="Your profile image" class="img-circle">
           </picture>
           <div class="text-center mt-5">
-            <h1 class="fs-1-5rem-lg-2-25rem font-fm-mulish fw-bold text-custom-white pt-6-custom pt-lg-7-custom">Name from localstorage</h1>
+            <h1 id="profile-name" class="fs-1-5rem-lg-2-25rem font-fm-mulish fw-bold text-custom-white pt-6-custom pt-lg-7-custom border-bottom border-warning w-75 m-auto pb-4">Username missing</h1>
           </div>
-          <button class="btn btn-warning font-fm-mulish fw-bold mt-3">Follow this HikeBuddy</button>
           <div class="text-center mt-3 pb-lg-4">
-            <h3 class="text-custom-white font-fm-mulish fs1rem-lg-1-5rem pt-lg-3"> Username's Hikebuddies</h3>
+            <h3 id="users-followers-name-header" class="text-custom-white font-fm-mulish fs1rem-lg-1-5rem pt-lg-3"> Username's Hikebuddies</h3>
             <p class="text-custom-white font-fm-mulish w-75 m-auto pt-2 fs-0-75rem-lg-1rem border-bottom border-warning pb-3 pb-lg-5">It looks like this user does not have any friends</p>
           </div>
           <div class="text-center mt-3">
-            <h4 class="text-custom-white font-fm-mulish fs1rem-lg-1-5rem">Posts by user</h4>
+            <h4 class="text-custom-white font-fm-mulish fs1rem-lg-1-5rem">Your posts</h4>
+          </div>
+          <div id="spinner-profile" class="spinner-border text-warning mt-5" role="status">
+            <span class="sr-only"></span>
           </div>
           <div id="userPosts" class="row justify-content-center mt-3 mx-0">
           </div>

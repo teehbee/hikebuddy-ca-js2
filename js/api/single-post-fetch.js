@@ -1,3 +1,6 @@
+
+
+
 import { apiBaseUrl, postsEndpoint } from "./constants.js"; 
 
 // Api call for specific post 
@@ -27,6 +30,7 @@ export async function getSpecificPost() {
     const specificPost = await response.json();
     return specificPost;
 
+    
 
 
   } catch (error) {

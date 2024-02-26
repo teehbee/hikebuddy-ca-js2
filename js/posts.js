@@ -4,10 +4,11 @@ const postContainerFeed = document.querySelector(".feed-container");
 const loadMoreLink = document.querySelector(".load-more");
 const sortOrderSelect = document.querySelector("#sortOrderSelect");
 const searchInput = document.querySelector("#searchInput");
+const spinner = document.querySelector("#spinner-feed");
 
 let currentIndex = 10;
 
-async function fetchPosts(url, sortOrder = "desc") {
+async function fetchPosts(url, sortOrder = "desc", includeAuthor = true) {
   try {
     const token = localStorage.getItem("accessToken");
     const getData = {
@@ -18,10 +19,14 @@ async function fetchPosts(url, sortOrder = "desc") {
       },
     };
 
-    const urlWithSortOrder = `${url}?sortOrder=${sortOrder}`;
+    const urlWithSortOrderAndAuthor = `${url}?sortOrder=${sortOrder}&_author=${includeAuthor}`;
 
-    const response = await fetch(urlWithSortOrder, getData);
+    const response = await fetch(urlWithSortOrderAndAuthor, getData);
+
+    spinner.classList.add("d-none");
+
     console.log(response);
+    
     const posts = await response.json();
 
     console.log(posts);

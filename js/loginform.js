@@ -8,7 +8,6 @@ const loginPassword = document.getElementById("login-user-password");
 
 const loginError = document.getElementById("login-error");
 
-
 function handleSubmit(event) {
   event.preventDefault(); // Prevent the form from submitting normally
  
@@ -20,9 +19,15 @@ function handleSubmit(event) {
   loginUser(apiBaseUrl + login, userLogin);
  }
 
+ document.addEventListener("click", function(event) {
+  if (!loginForm.contains(event.target)) {
+    loginError.classList.add("hidden");
+  }
+ })
 
 if (loginForm) {
   loginForm.addEventListener("submit", handleSubmit);
+  
 } else {
   console.error("login is incomplete");
 }

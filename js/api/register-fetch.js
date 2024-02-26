@@ -1,5 +1,10 @@
+const spinner = document.getElementById("spinner-register");
+
 export async function registerUser(url, data) {
   try {
+
+    spinner.classList.remove("hidden");
+
     const postData = {
       method: "post",
       headers: {
@@ -11,6 +16,7 @@ export async function registerUser(url, data) {
     const response = await fetch(url, postData);
 
     if(!response.ok) {
+      spinner.classList.add("hidden");
       throw new Error("HTTP error" + response.status);
     }
 
@@ -21,6 +27,8 @@ export async function registerUser(url, data) {
     localStorage.setItem("registerName", data.name);
 
     window.location.href = "../success.html";
+
+    spinner.classList.add("hidden");
 
     return json;
   } catch (error) {

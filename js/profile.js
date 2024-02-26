@@ -1,4 +1,5 @@
 const userPostContainer = document.querySelector("#userPosts");
+const spinnerProfile = document.querySelector("#spinner-profile"); 
 
 import { getUserPosts } from "./api/profile-posts-fetch.js"
 import { handleDeletePost } from "./api/delete-fetch.js"
@@ -11,6 +12,9 @@ async function userPosts() {
     const userPost = await getUserPosts();
 
     console.log(userPost); 
+
+    spinnerProfile.classList.add("d-none");
+
 
     userPost.forEach(post => {
     

@@ -64,6 +64,9 @@
       <textarea placeholder="Title" class="form-control w-100 mb-3 no-resize" id="messageTitle" rows="1"></textarea>
       <textarea placeholder="Write your message here..." class="form-control w-100 no-resize" id="messageContent" rows="4"></textarea>
       <button type="submit" class="btn btn-login w-100 rounded-3 font-fm-mulish fs-1-25-rem mt-3 py-1">Submit post</button>
+      <div id="spinner-create-post" class="spinner-border text-warning mt-5 hidden" role="status">
+        <span class="sr-only"></span>
+      </div>
     </form>
     </div>
     <div class="mt-5">
@@ -75,6 +78,11 @@
         <option selected value="desc">Newest</option>
         <option value="asc">Oldest</option>
       </select>
+
+      <div id="spinner-feed" class="spinner-border text-warning mt-5" role="status">
+        <span class="sr-only"></span>
+      </div>
+
     </div>
     </div>
     <div class="feed-container row justify-content-center mt-3 mx-0">

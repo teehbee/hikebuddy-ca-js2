@@ -1,6 +1,12 @@
 
+const loginError = document.getElementById("login-error");
+const loginSpinner = document.getElementById("spinner-login");
+
 export async function loginUser(url, data) {
   try {
+
+    loginSpinner.classList.remove("hidden");
+    
     const postData = {
       method: 'POST',
       headers: {
@@ -13,6 +19,7 @@ export async function loginUser(url, data) {
 
     if(!response.ok) {
       loginError.classList.remove("hidden");
+      loginSpinner.classList.add("hidden");
       throw new Error("HTTP error" + response.status);
     }
 
@@ -27,6 +34,8 @@ export async function loginUser(url, data) {
     console.log(json);
 
     window.location.href = "/profile/index.html";
+
+    loginSpinner.classList.add("hidden");
 
     return json;
   } catch (error) {

@@ -12679,6 +12679,11 @@ textarea.form-control-lg {
   }
 }
 
+.container {
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
 .rounded-custom-top {
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;

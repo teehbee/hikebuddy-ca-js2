@@ -3,6 +3,7 @@ import { apiBaseUrl, postsEndpoint, headers, token } from "./api/constants.js";
 const postMessageForm = document.getElementById("post-message-form");
 const messageTitle = document.getElementById("messageTitle");
 const messageContent = document.getElementById("messageContent");
+const messageTags = document.getElementById("messageTags");
 const postSpinner = document.getElementById("spinner-create-post");
 
 function validatePostForm() {
@@ -50,8 +51,13 @@ async function createPost(url, message) {
   if (validatePostForm()) {
     const postRequest = {
       title: messageTitle.value,
-      body: messageContent.value
+      body: messageContent.value,
+      tags: messageTags.value
     };
+
+    if (messageTags && messageTags.value.trim()) {
+      postRequest.tags = messageTags.value.split(",").map(tag => tag.trim());
+    }
   
   createPost(apiBaseUrl + postsEndpoint, postRequest);
 }

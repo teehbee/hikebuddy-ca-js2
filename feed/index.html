@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="../dist/css/index.css">
   <script defer src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script defer type="module" src="/js/posts.js"></script>
-  <script defer type="module" src="/js/posts-fetch.mjs"></script>
   <script defer type="module" src="/js/createpost.js"></script>
 </head>
 <body class="bg-login-body-green-white">
@@ -62,8 +61,9 @@
       <p class="text-frontpage font-fm-mulish fs1rem-lg-1-5rem pt-2 w-75 m-auto">Write where you are and who you are looking for</p>
       <div class="row pt-4 m-0">
         <form id="post-message-form" class="col-10 col-sm-8 col-md-6 col-xl-4 m-auto">
-      <textarea placeholder="Title" class="form-control w-100 mb-3 no-resize" id="messageTitle" rows="1"></textarea>
-      <textarea placeholder="Write your message here..." class="form-control w-100 no-resize" id="messageContent" rows="4"></textarea>
+      <input placeholder="Title" class="form-control w-100 mb-3" id="messageTitle"></input>
+      <textarea placeholder="Write your message here..." class="form-control w-100 no-resize mb-3" id="messageContent" rows="4"></textarea>
+      <input placeholder="Insert tags here" class="form-control w-100" id="messageTags" rows="4"></input>
       <button type="submit" class="btn btn-login w-100 rounded-3 font-fm-mulish fs-1-25-rem mt-3 py-1">Submit post</button>
       <div id="spinner-create-post" class="spinner-border text-warning mt-5 hidden" role="status">
         <span class="sr-only"></span>

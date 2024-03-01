@@ -1,39 +1,33 @@
 import { apiBaseUrl, postsEndpoint } from "./api/constants.js"; 
+import { fetchPosts } from "./api/posts-fetch.mjs";
+import { searchPosts } from "./search/search.mjs";
+import { extractUniqueTags } from "./tags/tags.mjs";
 
 const postContainerFeed = document.querySelector(".feed-container");
 const loadMoreLink = document.querySelector(".load-more");
 const sortOrderSelect = document.querySelector("#sortOrderSelect");
 const searchInput = document.querySelector("#searchInput");
 const spinner = document.querySelector("#spinner-feed");
+const tagSelect = document.querySelector("#filter-from-tags");
 
 let currentIndex = 10;
+let allPosts = [];
 
-async function fetchPosts(url, sortOrder = "desc", includeAuthor = true) {
-  try {
-    const token = localStorage.getItem("accessToken");
-    const getData = {
-      method: "GET",
-      headers: {
-        'Content-Type': "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    };
+// Function displaying posts on the feed page with search and filtering included
 
-    const urlWithSortOrderAndAuthor = `${url}?sortOrder=${sortOrder}&_author=${includeAuthor}`;
+async function displayPosts(posts, searchTerm, selectedTag) {
 
-    const response = await fetch(urlWithSortOrderAndAuthor, getData);
+  spinner.classList.add("d-none");
+  postContainerFeed.innerHTML = "";
 
-    spinner.classList.add("d-none");
+  let filteredPosts = searchPosts(posts, searchTerm)
 
-    console.log(response);
-    
-    const posts = await response.json();
+  if (selectedTag) {
+    filteredPosts = filteredPosts.filter(post => post.tags && post.tags.includes(selectedTag)
+    )
+  }
 
-    console.log(posts);
-
-    postContainerFeed.innerHTML = "";
-
-    posts.slice(0, currentIndex).forEach(post =>{      
+  filteredPosts.slice(0, currentIndex).forEach(post =>{      
     
     postContainerFeed.innerHTML += 
     `
@@ -58,26 +52,75 @@ async function fetchPosts(url, sortOrder = "desc", includeAuthor = true) {
   `;
 });
 
-   if (posts.length < currentIndex) {
-    loadMoreLink.style.display = "none";
-   }
+// Removing the load more button if there are no more posts
 
-  } catch (error) {
-    console.log(error);
+if (filteredPosts.length < currentIndex) {
+  loadMoreLink.style.display = "none";
+ }
+}
+
+// Loading the initial posts upon entering the site
+
+async function loadInitialPosts() {
+  try {
+    allPosts = await fetchPosts(apiBaseUrl + postsEndpoint, "desc");
+    const selectedTag = tagSelect.value;
+    displayPosts(allPosts, searchInput.value,);
+
+    // Extracting unique tags from posts and appending them to select
+
+    const tagsFromPosts = extractUniqueTags(allPosts);
+
+    tagsFromPosts.forEach(tag => {
+      const option = document.createElement("option");
+      option.value = tag;
+      option.textContent = tag;
+      tagSelect.appendChild(option);
+    });
+
+    console.log(allPosts);
+  }catch (error) {
+    console.error("Failed to load posts:", error);
   }
 }
 
-fetchPosts(apiBaseUrl + postsEndpoint, "desc");
+loadInitialPosts();
 
-loadMoreLink.addEventListener("click", (event) => {
+// Functionality on the load more button loading 10 more posts when clicked
+
+loadMoreLink.addEventListener("click", async (event) => {
   event.preventDefault();
   currentIndex += 10;
-  fetchPosts(apiBaseUrl + postsEndpoint, "desc");
+  try {
+    const posts = await fetchPosts(apiBaseUrl + postsEndpoint, "desc");
+    displayPosts(posts);
+  } catch (error) {
+    console.error("Failed to load more posts:", error);
+  }
 });
 
-sortOrderSelect.addEventListener("change", (event) => {
+// Sorting functionality for posts
+
+sortOrderSelect.addEventListener("click", async (event) => {
   const selectedSortOrder = event.target.value;
-  fetchPosts(apiBaseUrl + postsEndpoint, selectedSortOrder);
-})
+  try {
+    const posts = await fetchPosts(apiBaseUrl + postsEndpoint, selectedSortOrder);
+    displayPosts(posts);
+  } catch (error) {
+    console.error("Failed to sort posts:", error)
+  }
+});
 
+// Eventlistener for search field
 
+searchInput.addEventListener("keyup", (event) => {
+  const filteredPosts = searchPosts(allPosts, event.target.value);
+  displayPosts(filteredPosts, event.target.value);
+});
+
+// Eventlistener for filtering by tag
+
+tagSelect.addEventListener("change", (event) => {
+  const selectedTag = event.target.value;
+  displayPosts(allPosts, searchInput.value, selectedTag);
+});

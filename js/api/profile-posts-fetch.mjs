@@ -1,12 +1,6 @@
-import { apiBaseUrl, profileEndpoint, posts } from "./constants.mjs"; 
+import { apiBaseUrl, profileEndpoint, posts, headers } from "./constants.mjs"; 
 
-const token = localStorage.getItem("accessToken");
 const userName = localStorage.getItem("userName");
-
-const headers = {
-  'Content-Type': "application/json",
-  'Authorization': `Bearer ${token}`,
-};
 
 export async function getUserPosts() {
   try {

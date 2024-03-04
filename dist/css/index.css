@@ -12711,6 +12711,10 @@ textarea.form-control-lg {
   resize: none;
 }
 
+.no-border {
+  border: none;
+}
+
 .min-height-150-px {
   min-height: 150px;
 }

@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../dist/css/index.css">
-  <script defer src="../js/api/profile-posts-fetch.js" type="module"></script>
+  <script defer src="../js/api/profile-posts-fetch.mjs" type="module"></script>
   <script defer src="../js/profile.mjs" type="module"></script>
   <script defer src="../js/profileName.js" type="module"></script>
   <script defer src="../js/logOut.js"></script>
@@ -36,7 +36,7 @@
     </header>
     <main>
     <div class="container px-0 ">
-      <div class="bg-custom-green rounded-custom-top mt-5 text-center position-relative vh-100">
+      <div class="bg-custom-green rounded-custom-top mt-5 text-center position-relative">
         <picture class="position-absolute top-0 start-50 translate-middle">
           <source media="(min-width: 992px)" srcset="../assets/logo/profile-image-main-large.png">
           <img src="../assets/logo/profile-image-header-large.png" alt="Your profile image" class="img-circle">
@@ -56,6 +56,28 @@
           </div>
           <div id="userPosts" class="row justify-content-center mt-3 mx-0">
           </div>
+
+          <dialog id="update-post-dialog" class="border rounded p-5">
+            <div class="row">
+              <div class="col-12">
+                <h5 class="font-fm-mulish text-custom-green fs1rem-lg-1-5rem pb-5">Update post</h5>
+              </div>
+            <form id="update-post-form" method="dialog">
+              <div class="form-group">
+                <input type="text" id="post-title-update" name="post-title" class="w-75 mb-3 font-fm-mulish text-custom-green">
+              </div>
+              <div class="form-group">
+                <textarea id="post-body-update" name="post-body" class="font-fm-mulish w-75 no-resize text-custom-green" rows="5"></textarea>
+              </div>
+              <div class="form-group">
+              <input type="submit" class="btn btn-success rounded-5 font-fm-mulish fs-0-75rem-lg-1rem" value="Update post">
+              </div>
+              <button type="button" id="close" class="position-absolute top-0 end-0 bg-transparent no-border">
+                <i class="fa-solid fa-xmark text-custom-green fs-1-5-rem p-2"></i>
+              </button>
+            </form>
+          </dialog>
+
       </div>
     </div>
   </main>

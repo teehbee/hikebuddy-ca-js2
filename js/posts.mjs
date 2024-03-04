@@ -1,4 +1,4 @@
-import { apiBaseUrl, postsEndpoint } from "./api/constants.js"; 
+import { apiBaseUrl, postsEndpoint } from "./api/constants.mjs"; 
 import { fetchPosts } from "./api/posts-fetch.mjs";
 import { searchPosts } from "./search/search.mjs";
 import { extractUniqueTags } from "./tags/tags.mjs";
@@ -40,7 +40,8 @@ async function displayPosts(posts, searchTerm, selectedTag) {
                 <source media="(min-width: 992px)" srcset="../assets/logo/profile-image-large.png">
                 <img src="../assets/logo/profile-image-small.png" alt="Logo of original poster">
                 </picture>
-                <p class="post-body text-green-lg-white font-fm-mulish fs-0-625rem-lg-0-875rem pt-3">Post created: ${new Date(post.created).toLocaleDateString()}</p>
+                <p class="post-body text-green-lg-white font-fm-mulish fs-0-625rem-lg-0-875rem pt-3 mb-2">${post.author.name}</p>
+                <p class="post-body text-green-lg-white font-fm-mulish fs-0-625rem-lg-0-875rem">Posted: ${new Date(post.created).toLocaleDateString()}</p>
           </div>
           <div class="post-title-and-text-container col-9 ">
             <h5 class="post-title text-green-lg-white font-fm-mulish fs-6 fs-0-75rem-lg-1rem fw-bold pt-4 m-0">${post.title}</h5>
@@ -99,7 +100,7 @@ loadMoreLink.addEventListener("click", async (event) => {
   }
 });
 
-// Sorting functionality for posts
+// Eventlistener for sorting functionality
 
 sortOrderSelect.addEventListener("click", async (event) => {
   const selectedSortOrder = event.target.value;

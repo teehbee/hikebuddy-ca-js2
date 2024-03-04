@@ -1,4 +1,4 @@
-import { apiBaseUrl, postsEndpoint, headers } from "./constants.js";
+import { apiBaseUrl, postsEndpoint, headers } from "./constants.mjs";
 
 export async function handleDeletePost(event) {
   event.preventDefault();

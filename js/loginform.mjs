@@ -1,5 +1,5 @@
-import { loginUser } from "./api/login-fetch.js";
-import { apiBaseUrl, login } from "./api/constants.js";
+import { loginUser } from "./api/login-fetch.mjs";
+import { apiBaseUrl, login } from "./api/constants.mjs";
 
 const loginForm = document.getElementById("login-form");
 

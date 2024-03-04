@@ -1,4 +1,4 @@
-import { headers } from "./constants.js"; 
+import { headers } from "./constants.mjs"; 
 import { validatePostForm } from "../validation/validate-post-form.mjs";
 
 const postSpinner = document.getElementById("spinner-create-post");

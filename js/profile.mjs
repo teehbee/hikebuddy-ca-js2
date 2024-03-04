@@ -1,9 +1,9 @@
 const userPostContainer = document.querySelector("#userPosts");
 const spinnerProfile = document.querySelector("#spinner-profile"); 
 
-import { getUserPosts } from "./api/profile-posts-fetch.js"
-import { handleDeletePost } from "./api/delete-fetch.js"
-import { apiBaseUrl, postsEndpoint, token, headers } from "./api/constants.js"; 
+import { getUserPosts } from "./api/profile-posts-fetch.mjs"
+import { handleDeletePost } from "./api/delete-fetch.mjs"
+import { apiBaseUrl, postsEndpoint, token, headers } from "./api/constants.mjs"; 
 
 // Function showing posts from the specific user
 

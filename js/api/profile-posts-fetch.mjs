@@ -1,4 +1,4 @@
-import { apiBaseUrl, profileEndpoint, posts } from "./constants.js"; 
+import { apiBaseUrl, profileEndpoint, posts } from "./constants.mjs"; 
 
 const token = localStorage.getItem("accessToken");
 const userName = localStorage.getItem("userName");

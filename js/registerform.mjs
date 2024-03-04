@@ -1,11 +1,11 @@
 // Form validation
 
-import { registerUser } from "./api/register-fetch.js";
-import { checkRegUsername } from "./validation/validate-username.js";
-import { validateEmail } from "./validation/validate-email.js";
-import { checkLength, checkPasswordConfirm } from "./validation/validate-password.js";
+import { registerUser } from "./api/register-fetch.mjs";
+import { checkRegUsername } from "./validation/validate-username.mjs";
+import { validateEmail } from "./validation/validate-email.mjs";
+import { checkLength, checkPasswordConfirm } from "./validation/validate-password.mjs";
 
-import { apiBaseUrl, register } from "./api/constants.js";
+import { apiBaseUrl, register } from "./api/constants.mjs";
 
 const registrationForm = document.getElementById("registration-form");
 

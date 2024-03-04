@@ -1,5 +1,5 @@
 import { createPost } from "./api/post-creation.mjs";
-import { apiBaseUrl, postsEndpoint, headers } from "./api/constants.js"; 
+import { apiBaseUrl, postsEndpoint, headers } from "./api/constants.mjs"; 
 import { validatePostForm } from "./validation/validate-post-form.mjs";
 
 const postMessageForm = document.getElementById("post-message-form");

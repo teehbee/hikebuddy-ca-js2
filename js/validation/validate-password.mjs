@@ -6,7 +6,6 @@ export function checkLength(value, len) {
   }
 }
 
-
 export function checkPasswordConfirm(password, confirmPassword) {
   return password === confirmPassword;
 }

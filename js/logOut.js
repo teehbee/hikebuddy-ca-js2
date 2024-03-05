@@ -8,6 +8,6 @@ event.preventDefault();
   localStorage.removeItem("userName");
   localStorage.removeItem("accessToken");
 
-  window.location.href="../register.html";
+  window.location.href="../index.html";
 
 });

@@ -44,7 +44,7 @@ async function displayPosts(posts, searchTerm, selectedTag) {
                 <p class="post-body text-green-lg-white font-fm-mulish fs-0-625rem-lg-0-875rem">Posted: ${new Date(post.created).toLocaleDateString()}</p>
           </div>
           <div class="post-title-and-text-container col-9 ">
-            <h5 class="post-title text-green-lg-white font-fm-mulish fs-6 fs-0-75rem-lg-1rem fw-bold pt-4 m-0">${post.title}</h5>
+            <h4 class="post-title text-green-lg-white font-fm-mulish fs-6 fs-0-75rem-lg-1rem fw-bold pt-4 m-0">${post.title}</h4>
             <p class="post-body text-green-lg-white font-fm-mulish fs-0-75rem-lg-1rem pt-1">${post.body}</p>
           </div>
         </div>

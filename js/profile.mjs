@@ -38,7 +38,7 @@ async function userPosts() {
       </div></a>
       </div>
       <div class="col-9">
-        <h5 class="text-custom-green font-fm-mulish fs-6 fs-0-75rem-lg-1rem fw-bold pt-3 m-0">${post.title}</h5>
+        <h4 class="text-custom-green font-fm-mulish fs-6 fs-0-75rem-lg-1rem fw-bold pt-3 m-0">${post.title}</h4>
         <p class="text-custom-green font-fm-mulish fs-0-625rem-lg-0-875rem pt-1">${post.body}</p>
       </div>
     </div>

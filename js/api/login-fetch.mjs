@@ -1,15 +1,12 @@
-const loginForm = document.getElementById("login-form");
-
-const loginEmail = document.getElementById("login-user-email");
-const loginPassword = document.getElementById("login-user-password");
 
 const loginError = document.getElementById("login-error");
+const loginSpinner = document.getElementById("spinner-login");
 
-const apiBaseUrl = "https://api.noroff.dev";
-
-
-async function loginUser(url, data) {
+export async function loginUser(url, data) {
   try {
+
+    loginSpinner.classList.remove("hidden");
+    
     const postData = {
       method: 'POST',
       headers: {
@@ -22,39 +19,26 @@ async function loginUser(url, data) {
 
     if(!response.ok) {
       loginError.classList.remove("hidden");
+      loginSpinner.classList.add("hidden");
       throw new Error("HTTP error" + response.status);
     }
 
     const json = await response.json();
 
     const accessToken = json.accessToken;
+    const userName =json.name;
 
     localStorage.setItem(`accessToken`, accessToken);
+    localStorage.setItem(`userName`, userName)
 
     console.log(json);
 
     window.location.href = "/profile/index.html";
 
+    loginSpinner.classList.add("hidden");
+
     return json;
   } catch (error) {
     console.log("error is", error);
   }
-}
-
-function handleSubmit(event) {
-  event.preventDefault(); // Prevent the form from submitting normally
- 
-  const userLogin = {
-     email: loginEmail.value,
-     password: loginPassword.value
-  };
- 
-  loginUser(`${apiBaseUrl}/api/v1/social/auth/login`, userLogin);
- }
-
-
-if (loginForm) {
-  loginForm.addEventListener("submit", handleSubmit);
-} else {
-  console.error("login is incomplete");
 }

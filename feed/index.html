@@ -9,6 +9,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../dist/css/index.css">
+  <script defer src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script defer type="module" src="/js/posts.mjs"></script>
+  <script defer type="module" src="/js/createpost.mjs"></script>
 </head>
 <body class="bg-login-body-green-white">
   <header>
@@ -23,7 +26,7 @@
       </div>
       <div class="col-3 text-center pt-2">
         <a href="../profile/index.html">
-          <img src="../assets/img/profile-small.png" alt="Logo of original poster" class="img-fluid">
+          <img src="../assets/logo/profile-image-header-large.png" alt="Logo of original poster" class="img-fluid">
         </a>
       </div>
     </div>
@@ -40,12 +43,12 @@
         </div>
         <form class="col-3 d-none d-lg-block">
           <div class="input-group">
-            <input class="form-control" type="search" placeholder="Search user posts here" aria-label="Search">
+            <input id="searchInput" class="form-control" type="search" placeholder="Search user posts here" aria-label="Search">
           </div>
         </form>
         <div class="col-2">
           <a href="../profile/index.html">
-            <img src="../assets/img/profile-small.png" alt="Profile picture of logged in user">
+            <img src="../assets/logo/profile-image-header-large.png" alt="Profile picture of logged in user">
           </a>
         </div>
       </div>
@@ -55,57 +58,42 @@
           <input class="form-control" type="search" placeholder="Search user posts here" aria-label="Search">
         </div>
       </form>
-      <p class="text-frontpage font-fm-mulish fs1rem-lg-1-5rem pt-2 w-75 m-auto">Write where you are and who you are looking for</p>
+      <h2 class="text-frontpage font-fm-mulish fs1rem-lg-1-5rem pt-2 w-75 m-auto">Write where you are and who you are looking for</h2>
       <div class="row pt-4 m-0">
-        <div class="col-10 col-sm-8 col-md-6 col-xl-4 m-auto">
-      <textarea class="form-control w-100" id="exampleFormControlTextarea1" rows="4"></textarea>
+        <form id="post-message-form" class="col-10 col-sm-8 col-md-6 col-xl-4 m-auto">
+      <input aria-label="Title field for post" placeholder="Title" class="form-control w-100 mb-3" id="messageTitle"></input>
+      <textarea aria-label="Content field for post" placeholder="Write your message here..." class="form-control w-100 no-resize mb-3" id="messageContent" rows="4"></textarea>
+      <input aria-label="Field for inserting tags for post" placeholder="Insert tags here" class="form-control w-100" id="messageTags" rows="4"></input>
       <button type="submit" class="btn btn-login w-100 rounded-3 font-fm-mulish fs-1-25-rem mt-3 py-1">Submit post</button>
-    </div>
+      <div id="spinner-create-post" class="spinner-border text-warning mt-5 hidden" role="status">
+        <span class="sr-only"></span>
+      </div>
+    </form>
     </div>
     <div class="mt-5">
-      <h2 class="text-frontpage font-fm-mulish border-top border-warning w-75 m-auto fs-1-5-rem pt-3">Other users looking for a Hikebuddy</h2>
+      <h3 class="text-frontpage font-fm-mulish border-top border-warning w-75 m-auto fs-1-5-rem pt-3">Other users looking for a Hikebuddy</h3>
     </div>
     <div class="row mt-3 justify-content-center mx-0">
-      <div class="col-8 col-sm-4 col-md-2">
-      <select class="form-select form-select-sm p-1" aria-label="Sort user posts by">
-        <option selected>Sort posts by</option>
-        <option value="">Date</option>
-        <option value="">Popularity</option>
-        <option value="">Alphabetically</option>
+      <div class="col-6 col-sm-4 col-md-2">
+      <select id="sortOrderSelect" class="form-select form-select-sm p-1" aria-label="Sort user posts by">
+        <option selected value="desc">Newest</option>
+        <option value="asc">Oldest</option>
       </select>
     </div>
+      <div class="col-6 col-sm-4 col-md-2">
+      <select id="filter-from-tags" class="form-select form-select-sm p-1" aria-label="Filter posts by tags">
+        <option selected value="all-posts">Sort by tags</option>
+      </select>
     </div>
-    <div class="row justify-content-center mt-3 mx-0">
-      <div class="col-10 col-lg-5 bg-light m-lg-3 mt-4">
-        <div class="row bg-login-body-green-white">
-          <div class="col-3 pt-4">
-            <a href="../profile/index.html">
-              <picture>
-                <source media="(min-width: 992px)" srcset="../assets/img/profile-post-large.png">
-                <img src="../assets/img/profile-post-small.png" alt="Logo of original poster">
-                </picture></a>
-          </div>
-          <div class="col-9">
-            <h5 class="text-green-lg-white font-fm-mulish fs-6  fs-0-75rem-lg-1rem fw-bold pt-3 m-0 ">Username</h5>
-            <p class="text-green-lg-white font-fm-mulish fs-0-625rem-lg-0-875rem pt-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget scelerisque lectus. Nullam commodo libero in urna pellentesque, eu luctus nunc fermentum. Ut urna augue, suscipit vitae ante ut, lobortis dignissim enim. Duis tincidunt nec diam eu bibendum. Vivamus vitae risus venenatis, aliquam sapien sit amet, suscipit sapien.</p>
-          </div>
-        </div>
+
       </div>
-      <div class="col-10 col-lg-5 bg-light m-lg-3 mt-4">
-        <div class="row bg-login-body-green-white">
-          <div class="col-3 pt-4">
-            <a href="../profile/index.html">
-              <picture>
-                <source media="(min-width: 992px)" srcset="../assets/img/profile-post-large.png">
-                <img src="../assets/img/profile-post-small.png" alt="Logo of original poster">
-                </picture></a>
-          </div>
-          <div class="col-9">
-            <h5 class="text-green-lg-white font-fm-mulish fs-6  fs-0-75rem-lg-1rem fw-bold pt-3 m-0 ">Username</h5>
-            <p class="text-green-lg-white font-fm-mulish fs-0-625rem-lg-0-875rem pt-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget scelerisque lectus. Nullam commodo libero in urna pellentesque, eu luctus nunc fermentum. Ut urna augue, suscipit vitae ante ut, lobortis dignissim enim. Duis tincidunt nec diam eu bibendum. Vivamus vitae risus venenatis, aliquam sapien sit amet, suscipit sapien.</p>
-          </div>
-        </div>
-      </div>
+      <div id="spinner-feed" class="spinner-border text-warning mt-5" role="status">
+        <span class="sr-only"></span>
+    </div>
+    <div class="feed-container row justify-content-center mt-3 mx-0">
+    </div>
+    <div class="load-more text-center py-5">
+      <a class="text-frontpage font-fm-mulish text-decoration-none fw-bold" href="">Load more posts...</a>
     </div>
     </div>
   </div>

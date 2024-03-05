@@ -1,14 +1,5 @@
  @import "variables";
 
-// .btn {
-//   &-unique {
-//     @include button-variant($primary, $danger);
-
-//     font-family: fantasy;
-    
-//   }
-// }
-
 .btn {
   &-login {
     @include button-variant($frontpage-yellow, $frontpage-yellow);

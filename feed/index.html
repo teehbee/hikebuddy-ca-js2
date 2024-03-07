@@ -40,7 +40,7 @@
           <img src="../assets/logo/HikeBuddy-logos_transparent.png" alt="Hikebuddy logo">
         </a>
         </div>
-        <form class="col-3 d-none d-lg-block">
+        <form id="search-form" class="col-3 d-none d-lg-block">
           <div class="input-group">
             <input id="searchInput" class="form-control" type="search" placeholder="Search user posts here" aria-label="Search">
           </div>
@@ -61,7 +61,7 @@
       <div class="row pt-4 m-0">
         <form id="post-message-form" class="col-10 col-sm-8 col-md-6 col-xl-4 m-auto">
       <input aria-label="Title field for post" placeholder="Title" class="form-control w-100 mb-3" id="messageTitle">
-      <textarea aria-label="Content field for post" placeholder="Write your message here..." class="form-control w-100 no-resize mb-3" id="messageContent" rows="4"></textarea>
+      <textarea aria-label="Content field for post" placeholder="Write your message here... (max 280 characters)" class="form-control w-100 no-resize mb-3" id="messageContent" rows="4"></textarea>
       <input aria-label="Field for inserting tags for post" placeholder="Insert tags here" class="form-control w-100" id="messageTags">
       <button type="submit" class="btn btn-login w-100 rounded-3 font-fm-mulish fs-1-25-rem mt-3 py-1">Submit post</button>
       <div id="spinner-create-post" class="spinner-border text-warning mt-5 hidden" role="status">

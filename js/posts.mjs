@@ -7,6 +7,7 @@ const postContainerFeed = document.querySelector(".feed-container");
 const loadMoreLink = document.querySelector(".load-more");
 const sortOrderSelect = document.querySelector("#sortOrderSelect");
 const searchInput = document.querySelector("#searchInput");
+const searchForm = document.querySelector("#search-form");
 const spinner = document.querySelector("#spinner-feed");
 const tagSelect = document.querySelector("#filter-from-tags");
 
@@ -114,10 +115,14 @@ sortOrderSelect.addEventListener("click", async (event) => {
 
 // Eventlistener for search field
 
-searchInput.addEventListener("keyup", (event) => {
+searchInput.addEventListener("input", (event) => {
   const filteredPosts = searchPosts(allPosts, event.target.value);
   displayPosts(filteredPosts, event.target.value);
 });
+
+searchForm.addEventListener("submit", function(e) {
+  e.preventDefault();
+}, false);
 
 // Eventlistener for filtering by tag
 
@@ -125,3 +130,4 @@ tagSelect.addEventListener("change", (event) => {
   const selectedTag = event.target.value;
   displayPosts(allPosts, searchInput.value, selectedTag);
 });
+

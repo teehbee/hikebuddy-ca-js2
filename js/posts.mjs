@@ -128,6 +128,10 @@ searchForm.addEventListener("submit", function(e) {
 
 tagSelect.addEventListener("change", (event) => {
   const selectedTag = event.target.value;
+  if (selectedTag === "all-posts") {
+    displayPosts(allPosts, searchInput.value);
+  } else {
   displayPosts(allPosts, searchInput.value, selectedTag);
+}
 });
 

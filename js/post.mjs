@@ -5,9 +5,6 @@ import { getSpecificPost } from "./api/single-post-fetch.mjs";
 async function singlePost() {
   try {
     const specificPost = await getSpecificPost();
-
-    console.log(specificPost);
-
     singlePostContainer.innerHTML = `
     <div id="specific-post-content" class="mt-5 pb-5">
     <h1 class="text-frontpage font-fm-mulish border-bottom border-warning w-75 m-auto fs-1-5-rem pt-3 pb-2">${specificPost.title}</h1>
@@ -17,7 +14,6 @@ async function singlePost() {
     </div>
     `;
   } catch (error) {
-    console.log(error);
   }};
 
   singlePost();

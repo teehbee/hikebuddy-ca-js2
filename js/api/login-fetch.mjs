@@ -31,14 +31,11 @@ export async function loginUser(url, data) {
     localStorage.setItem(`accessToken`, accessToken);
     localStorage.setItem(`userName`, userName)
 
-    console.log(json);
-
     window.location.href = "/profile/index.html";
 
     loginSpinner.classList.add("hidden");
 
     return json;
   } catch (error) {
-    console.log("error is", error);
   }
 }

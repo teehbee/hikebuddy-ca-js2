@@ -13,12 +13,8 @@ export async function fetchPosts(url, sortOrder = "desc", includeAuthor = true) 
 
     const posts = await response.json();
 
-    console.log(response);
-
     return posts;
 
   } catch (error) {
-    console.log(error);
-    throw error;
   }
 }

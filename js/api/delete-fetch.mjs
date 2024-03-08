@@ -11,6 +11,6 @@ export async function handleDeletePost(event) {
   if (response.ok) {
     event.target.closest(".bg-light").remove();
   } else {
-    console.error("Error deleting post:", response.status);
+    alert(`Error deleting post: ${response.status}`);
   }
 }

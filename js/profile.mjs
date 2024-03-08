@@ -47,7 +47,6 @@ async function userPosts() {
   attachDeleteEventListener();
   attachEditEventListener(userPost);
   } catch (error) {
-    console.log(error);
   }};
 
 userPosts();
@@ -77,7 +76,6 @@ document.querySelectorAll("#editPost").forEach(editLink => {
 
     dialog.showModal();
   } else {
-    console.error("Something goes wrong here: ", postId);
   }
   });
 });
@@ -95,14 +93,13 @@ document.querySelectorAll("#editPost").forEach(editLink => {
    
 
    try {
-    const updatedPost = await updatePost(postId, { title: postTitle, body: postBody });
-    console.log("Post was updated successfully", updatedPost);
+
+    await updatePost(postId, { title: postTitle, body: postBody });
 
     dialog.close();
 
     location.reload();
    } catch (error) {
-    console.error("Error updating post", error);
    }
  }); 
 

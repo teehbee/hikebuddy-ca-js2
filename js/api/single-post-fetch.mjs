@@ -12,19 +12,9 @@ export async function getSpecificPost() {
       method: "GET",
       headers: headers,
     });
-
-    if (!response.ok) {
-      throw new Error (`HTTP error! status: ${response.status}`);
-    }
-
     const specificPost = await response.json();
     return specificPost;
-
-    
-
-
   } catch (error) {
-    console.error("Error fetching specific post", error);
   }
 }
 

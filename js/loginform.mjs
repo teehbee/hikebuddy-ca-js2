@@ -29,5 +29,4 @@ if (loginForm) {
   loginForm.addEventListener("submit", handleSubmit);
   
 } else {
-  console.error("login is incomplete");
 }

@@ -32,6 +32,5 @@ export async function registerUser(url, data) {
 
     return json;
   } catch (error) {
-    console.log("error is", error);
   }
 }

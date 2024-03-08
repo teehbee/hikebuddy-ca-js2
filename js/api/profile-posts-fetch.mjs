@@ -9,14 +9,9 @@ export async function getUserPosts() {
       headers: headers,
     });
 
-    if (!response.ok) {
-      throw new Error (`HTTP error! status: ${response.status}`);
-    }
-
     const userPosts = await response.json();
     return userPosts;
 } catch (error) {
-  console.error("Error fetching user posts", error)
   }
 }
 

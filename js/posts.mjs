@@ -80,9 +80,7 @@ async function loadInitialPosts() {
       tagSelect.appendChild(option);
     });
 
-    console.log(allPosts);
   }catch (error) {
-    console.error("Failed to load posts:", error);
   }
 }
 
@@ -97,7 +95,6 @@ loadMoreLink.addEventListener("click", async (event) => {
     const posts = await fetchPosts(apiBaseUrl + postsEndpoint, "desc");
     displayPosts(posts);
   } catch (error) {
-    console.error("Failed to load more posts:", error);
   }
 });
 
@@ -109,7 +106,6 @@ sortOrderSelect.addEventListener("click", async (event) => {
     const posts = await fetchPosts(apiBaseUrl + postsEndpoint, selectedSortOrder);
     displayPosts(posts);
   } catch (error) {
-    console.error("Failed to sort posts:", error)
   }
 });
 

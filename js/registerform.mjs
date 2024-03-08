@@ -79,7 +79,6 @@ document.addEventListener("click", function(event) {
 if (registrationForm) {
   registrationForm.addEventListener("submit", validateForm);
 } else {
-  console.error("registration is incomplete");
 }
 
 

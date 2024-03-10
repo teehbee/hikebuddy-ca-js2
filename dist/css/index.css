@@ -12679,6 +12679,11 @@ textarea.form-control-lg {
   }
 }
 
+.container {
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
 .rounded-custom-top {
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
@@ -12700,6 +12705,18 @@ textarea.form-control-lg {
 .br-frontpage-img {
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
+}
+
+.no-resize {
+  resize: none;
+}
+
+.no-border {
+  border: none;
+}
+
+.min-height-150-px {
+  min-height: 150px;
 }
 
 .frontpage-height {
@@ -12855,6 +12872,10 @@ textarea.form-control-lg {
   .fs-2-rem-lg-2-5-rem {
     font-size: 2.5rem;
   }
+}
+
+.hidden {
+  display: none;
 }
 
 /*# sourceMappingURL=index.css.map */

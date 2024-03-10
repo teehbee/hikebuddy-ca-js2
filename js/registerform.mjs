@@ -2,7 +2,7 @@
 
 import { registerUser } from "./api/register-fetch.mjs";
 import { checkRegUsername } from "./validation/validate-username.mjs";
-import { validateEmail } from "./validation/validate-email.mjs";
+import { validateEmail } from "./validation/validate-email.js";
 import { checkLength, checkPasswordConfirm } from "./validation/validate-password.mjs";
 
 import { apiBaseUrl, register } from "./api/constants.mjs";

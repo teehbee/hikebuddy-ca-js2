@@ -1,6 +1,6 @@
 import { apiBaseUrl, postsEndpoint } from "./api/constants.mjs"; 
 import { fetchPosts } from "./api/posts-fetch.mjs";
-import { searchPosts } from "./search/search.mjs";
+import { searchPosts } from "./search/search.js";
 import { extractUniqueTags } from "./tags/tags.mjs";
 
 const postContainerFeed = document.querySelector(".feed-container");

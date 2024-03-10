@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: validation/validate-email.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,38 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: validation/validate-email.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Controlling and validating the email against the 
+ * specific domain patterns. In this case
+ * noroff.no or stud.noroff.no.
+ * @param {string} regEmail - The email address to be validated.
+ * @returns {boolean} True if the email matches the domain
+ * patterns, otherwise false.
+ * @example
+ * ```js
+ * // returns true 
+ * validateEmail("ola.nordmann@stud.noroff.no");
+ * // returns false 
+ * validateEmail("ola.nordmann@gmail.com");
+ * ```
+ */
 
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+export function validateEmail(regEmail) {
+  const regEx = /^[a-zA-Z0-9._%+-]+@(noroff\.no|stud\.noroff\.no)$/;
+  const patternMatches = regEx.test(regEmail);
+  return patternMatches;
+}</code></pre>
+        </article>
+    </section>
 
 
 
